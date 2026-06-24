@@ -1,0 +1,47 @@
+complivibe:
+  api_url: https://api.complivibe.in
+  org_id: "your-org-uuid-here"
+  connector_token: "your-token-here"
+
+connector:
+  version: "1.0.0"
+  scan_interval_minutes: 60
+  heartbeat_interval_minutes: 30
+  queue_file: /var/lib/complivibe/queue.db
+  queue_max_size: 10000
+
+zero_day:
+  enabled: true
+  threshold: 0.55  # matches server-side threshold
+  min_calls_24h: 5  # minimum to trigger classification
+
+federated:
+  enabled: false          # opt-in, default off
+  min_behavioral_score: 0.55
+  submit_interval_hours: 24
+
+sources:
+  vpc_flow:
+    enabled: false
+    aws_region: ap-south-1
+    log_group: /aws/vpc/flowlogs
+
+  cloudtrail:
+    enabled: false
+    aws_region: ap-south-1
+    s3_bucket: ""
+    log_group: ""
+
+  azure_activity:
+    enabled: false
+    subscription_id: ""
+
+  gcp_audit:
+    enabled: false
+    project_id: ""
+    log_name: "cloudaudit.googleapis.com/activity"
+
+  local_file:
+    enabled: false
+    file_path: /var/log/network/flows.log
+    format: csv  # csv | json | syslog
