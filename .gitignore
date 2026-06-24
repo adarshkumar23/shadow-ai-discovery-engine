@@ -8,3 +8,14 @@ dist/
 .DS_Store
 *.pem
 *.key
+.env
+*.pem
+*.key
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+dist/
+*.egg-info/
+.DS_Store
+node_modules/
